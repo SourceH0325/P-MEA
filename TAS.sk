@@ -1,0 +1,740 @@
+#Tool And Skill (TAS) 1.1.5.2v beta 2 수정 날짜:2021 08 26 / MADE BY SourceH
+
+command /킷:
+    trigger:
+        open chest with 3 rows named "&6TAS &aALL &eKITS" to player
+        set slot 0 of current inventory of player to light blue stained glass pane
+        set slot 1 of current inventory of player to light blue stained glass pane
+        set slot 2 of current inventory of player to light blue stained glass pane
+        set slot 3 of current inventory of player to light blue stained glass pane
+        set slot 4 of current inventory of player to light blue stained glass pane
+        set slot 5 of current inventory of player to light blue stained glass pane
+        set slot 6 of current inventory of player to light blue stained glass pane
+        set slot 7 of current inventory of player to light blue stained glass pane
+        set slot 8 of current inventory of player to light blue stained glass pane
+        set slot 9 of current inventory of player to light blue stained glass pane
+        set slot 10 of current inventory of player to a wood sword named "&e제우스&b지팡이" with lore "&e클릭시 &e제우스&b지팡이 &e지급"
+        set slot 11 of current inventory of player to a iron sword named "&c헤라클&6틀렛" with lore "&e클릭시 &c헤라클&6틀렛 &e지급"
+        set slot 12 of current inventory of player to a golden sword named "&d데빌&e블레이드" with lore "&e클릭시 &d데빌&e블레이드 &e지급"
+        set slot 13 of current inventory of player to a diamond sword named "&6헬리오스의 &e사슬" with lore "&e클릭시 &6헬리오스의 &e사슬 &e지급"
+        set slot 14 of current inventory of player to a golden axe named "&a힐링 &e엑스" with lore "&e클릭시 &a힐링 &e엑스 지급"
+        set slot 15 of current inventory of player to a diamond axe named "&4데스&f스톰&e블레이드" with lore "&e클릭시 &4데스&f스톰&e블레이드 &e지급"
+        set slot 17 of current inventory of player to light blue stained glass pane
+        set slot 18 of current inventory of player to light blue stained glass pane
+        set slot 19 of current inventory of player to light blue stained glass pane
+        set slot 20 of current inventory of player to light blue stained glass pane
+        set slot 21 of current inventory of player to light blue stained glass pane
+        set slot 22 of current inventory of player to light blue stained glass pane
+        set slot 23 of current inventory of player to light blue stained glass pane
+        set slot 24 of current inventory of player to light blue stained glass pane
+        set slot 25 of current inventory of player to light blue stained glass pane
+        set slot 26 of current inventory of player to light blue stained glass pane
+
+on inventory click:
+	if inventory name contains "&6TAS &aALL &eKITS":
+		if click type is left mouse button with shift or right mouse button with shift:
+			cancel event
+		else:
+			if clicked slot is 10:
+				cancel event	
+				give 1 wood sword named "&e제우스&b지팡이" to player
+				
+on inventory click:
+	if inventory name contains "&6TAS &aALL &eKITS":
+		if click type is left mouse button with shift or right mouse button with shift:
+			cancel event
+		else:
+			if clicked slot is 11:
+				cancel event	
+				give 1 iron sword named "&c헤라클&6틀렛" to player
+
+on inventory click:
+	if inventory name contains "&6TAS &aALL &eKITS":
+		if click type is left mouse button with shift or right mouse button with shift:
+			cancel event
+		else:
+			if clicked slot is 12:
+				cancel event	
+				give 1 golden sword named "&d데빌&e블레이드" to player
+
+on inventory click:
+    if inventory name contains "&6TAS &aALL &eKITS":
+        if click type is left mouse button with shift or right mouse button with shift:
+            cancel event
+        else:
+            if clicked slot is 13:
+                cancel event
+                give 1 diamond sword named "&6헬리오스의 &e사슬" to player
+
+on inventory click:
+    if inventory name contains "&6TAS &aALL &eKITS":
+        if click type is left mouse button with shift or right mouse button with shift:
+            cancel event
+        else:
+            if clicked slot is 14:
+                cancel event
+                give 1 golden axe named "&a힐링 &e엑스" to player
+
+on inventory click:
+    if inventory name contains "&6TAS &aALL &eKITS":
+        if click type is left mouse button with shift or right mouse button with shift:
+            cancel event
+        else:
+            if clicked slot is 15:
+                cancel event
+                give 1 diamond axe named "&4데스&f스톰&e블레이드" to player
+
+#----------------------------------------------------------------------------------
+
+command /S1:
+    trigger:
+        message "&e제우스&b지팡이 &6지급 완료"
+        wait 1 tick
+        give 1 wood sword named "&e제우스&b지팡이" to player
+
+command /제우스지팡이초기화:
+    trigger:
+        delete {제우스::%player%::*}
+        message "&e제우스&b지팡이 &c초기화 완료"
+
+on right click:
+    player is holding a wood sword:
+        if name of player's tool contains "&e제우스&b지팡이":
+            if player is not sneaking:
+                if {제우스::%player%::실행} is set:
+                    message "&e제우스&a가 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {제우스::%player%::실행} is not set:
+                    set {제우스::%player%::실행} to true
+                    set {제우스_loc} to location of targeted entity
+                    if {제우스_loc} is location of targeted entity:
+                        strike lightning at {제우스_loc}
+                        strike lightning at {제우스_loc}
+                        strike lightning at {제우스_loc}
+                        damage targeted entity by 5
+                        send action bar "&e쾅!" to player
+                        wait 3 seconds
+                        message "&e제우스 &a사용가능"
+                        delete {제우스::%player%::실행}
+
+                    else:
+                        message "&e제우스&c는 엔티티에게만 가능합니다!"
+                        play sound "minecraft:entity.endermen.teleport"
+                        delete {제우스::%player%::실행}
+
+on right click:
+    player is holding a wood sword:
+        if name of player's tool contains "&e제우스&b지팡이":
+            if player is sneaking:
+                if {제우스::%player%::궁} is set:
+                    message "&e썬더 &b볼트&a가 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                if {제우스::%player%::궁} is not set:
+                    set {제우스::%player%::궁} to true
+                    send action bar "&e◇◇◇◇◇" to player
+                    drawHalo particle "redstone", RGB 0, 0, 0, center player, id "썬더볼트_%player%", rainbowMode true, solid true, density 10, visibleRange 32
+                    drawSphere style 1, particle "redstone", center player, id "썬더볼트_%player%", rainbowMode true, radius 1, density 100, visibleRange 32, pulseDelay 1
+                    wait 1 seconds
+                    if player is sneaking:
+                        send action bar "&a◆&e◇◇◇◇" to player
+                        play sound "minecraft:block.note.pling"
+                        wait 1 seconds
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "썬더볼트_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&e썬더 &b볼트 &a사용 가능"
+                        wait 1 tick
+                        delete {제우스::%player%::궁}
+
+                    if player is sneaking:
+                        send action bar "&a◆◆&e◇◇◇" to player
+                        play sound "minecraft:block.note.pling"
+                        wait 1 seconds
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "썬더볼트_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&e썬더 &b볼트 &a사용 가능"
+                        wait 1 tick
+                        delete {제우스::%player%::궁}
+
+                    if player is sneaking:
+                        send action bar "&a◆◆◆&e◇◇" to player 
+                        play sound "minecraft:block.note.pling"
+                        wait 1 seconds
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "썬더볼트_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&e썬더 &b볼트 &a사용 가능"
+                        wait 1 tick
+                        delete {제우스::%player%::궁}
+
+                    if player is sneaking:
+                        send action bar "&a◆◆◆◆&e◇" to player
+                        play sound "minecraft:block.note.pling"
+                        wait 1 seconds
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "썬더볼트_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&e썬더 &b볼트 &a사용 가능"
+                        wait 1 tick
+                        delete {제우스::%player%::궁}
+
+                    if player is sneaking:
+                        send action bar "&a◆◆◆◆◆" to player
+                        play sound "minecraft:entity.wither.break_block"
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "썬더볼트_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&e썬더 &b볼트 &a사용 가능"
+                        wait 1 tick
+                        delete {제우스::%player%::궁}
+
+                    wait 0.3 seconds
+                    stopEffect id "썬더볼트_%player%"
+                    wait 1 tick
+                    send action bar "&a게이지 풀!" to player
+                    set {제우스::%player%::move} to true
+                    apply speed 3 to player for 6 seconds
+                    apply resistance 5 to player for 6 seconds
+                    apply invisibility 1 to player for 6 seconds
+                    loop all entities in radius 6 around player:
+                        if name of loop-entity is not "%player%":
+                            apply poison 3 to loop-entity for 1 seconds 
+                    send action bar "&c◆◆◆◆◆" to player
+                    wait 1 seconds
+                    send action bar "&c◆◆◆◆&e◇" to player
+                    wait 1 seconds
+                    send action bar "&c◆◆◆&e◇◇" to player
+                    wait 1 seconds
+                    send action bar "&c◆◆&e◇◇◇" to player
+                    wait 1 seconds
+                    send action bar "&c◆&e◇◇◇◇" to player
+                    wait 1 seconds
+                    send action bar "&e◇◇◇◇◇" to player
+                    wait 1 tick
+                    delete {제우스::%player%::move}
+                    wait 1 tick
+                    set {제우스::%player%::궁} to true
+                    wait 1 minutes
+                    message "&e썬더 &b볼트 &a사용가능"
+                    wait 1 tick
+                    delete {제우스::%player%::궁}
+
+on left click:
+    player is holding a wood sword:
+        if name of player's tool contains "&e제우스&b지팡이":
+            repair tool of player
+
+on player move:
+    if {제우스::%player%::move} is true:
+        player is holding a wood sword:
+            if name of player's tool contains "&e제우스&b지팡이": 
+                strike lightning at the player
+
+#----------------------------------------------------------------------------------------------------------
+
+command /킷모두초기화:
+    trigger:
+        delete {제우스::%player%::*}
+        delete {헤라클틀렛::%player%::*}
+        delete {데빌블레이드::%player%::*}
+        delete {데스스톰블레이드::%player%::*}
+        delete {헬리오스::%player%::*}
+        delete {힐링엑스::%player%::*}
+        delete {데스스톰블레이드::%player%::*}
+        message "&c초기화 완료"
+
+#------------------------------------------------------------------------------------
+
+command /S2:
+    trigger:
+        message "&c헤라클&6틀렛 &6지급 완료"
+        wait 1 tick
+        give 1 iron sword named "&c헤라클&6틀렛" to player
+
+command /헤라클틀렛초기화:
+    trigger:
+        delete {헤라클틀렛::%player%::*}
+        message "&c헤라클&6틀렛 &c초기화 완료"
+
+on right click:
+    player is holding a iron sword:
+        if name of player's tool contains "&c헤라클&6틀렛":
+            if player is not sneaking:
+                if {헤라클틀렛::%player%::우클} is set:
+                    message "&c피의 &d숨결&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {헤라클틀렛::%player%::우클} is not set:
+                    apply strength 2 to player for 6 seconds
+                    send action bar "&c피의 &d숨결!" to player
+                    play sound "minecraft:entity.wither.ambient"
+                    set {헤라클틀렛::%player%::우클} to true
+                    drawWarpRings style 8, particle "redstone", RGB 255, 255, 255, center player, id "too_%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 0.1
+                    wait 1 second
+                    stopEffect id "too_%player%"
+                    wait 9 seconds
+                    delete {헤라클틀렛::%player%::우클}
+                    message "&c피의 &d숨결 &a사용가능"
+
+on right click:
+    player is holding a iron sword:
+        if name of player's tool contains "&c헤라클&6틀렛":
+            if player is sneaking:
+                if {헤라클틀렛::%player%::왼클} is set:
+                    message "&dPUNCH&cDOWN&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {헤라클틀렛::%player%::왼클} is not set:
+                    set {헤라클틀렛::%player%::왼클} to true
+                    send action bar "&dPUNCH!" to player
+                    drawWarpRings style 2, particle "redstone", RGB 255, 0, 0, center player, id "pu_%player%", rainbowMode false, scan true, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 0.1
+                    drawHalo particle "flame", RGB 0, 0, 0, center player, id "ch_%player%", rainbowMode true, solid true, density 10, visibleRange 32
+                    drawSphere style 1, particle "flame", center player, id "do_%player%", rainbowMode true, radius 1, density 100, visibleRange 32, pulseDelay 1
+                    apply resistance 5 to player for 3 seconds 
+                    play sound "minecraft:entity.wither.shoot"
+                    push the player upwards at speed 2
+                    wait 0.7 seconds
+                    push the player downwards at speed 5
+                    play sound "minecraft:entity.wither.shoot"
+                    send action bar "&cDOWN!" to player
+                    wait 0.4 seconds
+                    play sound "minecraft:entity.wither.hurt"
+                    loop all entities in radius 6 around player:
+                        if name of loop-entity is not "%player%":
+                            damage loop-entity by 5 hearts
+                            push the loop-entity upwards at speed 2
+                    stopEffect id "pu_%player%"
+                    stopEffect id "ch_%player%"
+                    stopEffect id "do_%player%"
+                    wait 1 minutes
+                    delete {헤라클틀렛::%player%::왼클}
+                    message "&dPUNCH&cDOWN &a사용 가능"
+
+on left click:
+    player is holding a iron sword:
+        if name of player's tool contains "&c헤라클&6틀렛":
+            repair tool of player
+
+#------------------------------------------------------------------------------------------------
+
+command /S3:
+    trigger:
+        message "&d데빌&e블레이드 &6지급완료"
+        wait 1 tick
+        give 1 golden sword named "&d데빌&e블레이드" to player
+
+command /데빌블레이드초기화:
+    trigger:
+        delete {데빌블레이드::%player%::*}
+        message "&d데빌&e블레이드 &c초기화"
+
+on right click:
+    player is holding a golden sword:
+        if name of player's tool contains "&d데빌&e블레이드":
+            if player is not sneaking:
+                if {데빌블레이드::%player%::우클} is set:
+                    message "&c불의 &d꽃&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {데빌블레이드::%player%::우클} is not set:
+                    play sound "minecraft:entity.wither.hurt"
+                    drawWarpRings style 4, particle "flame", RGB 0, 0, 0, center player, id "fire_%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 15, visibleRange 32, pulseDelay 5
+                    set {데빌블레이드::%player%::우클} to true
+                    apply strength 2 to player for 3 seconds
+                    loop all entities in radius 6 around player:
+                        if name of loop-entity is not "%player%":
+                            apply wither 3 to loop-entity for 3 seconds
+                    wait 0.5 second
+                    stopEffect id "fire_%player%"
+                    wait 5 seconds
+                    message "&c불의 &d꽃 &a사용가능"
+                    delete {데빌블레이드::%player%::우클}
+                        
+on right click:
+    player is holding a golden sword:
+        if name of player's tool contains "&d데빌&e블레이드":
+            if player is sneaking:
+                if {데빌블레이드::%player%::왼클} is set:
+                    message "&c악마의 &e날개&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {데빌블레이드::%player%::왼클} is not set:
+                    set {데빌블레이드::%player%::왼클} to true
+                    drawWings style 13, particle1 "flame", speed 0, RGB 0, 0, 0, particle2 "redstone", speed2 0, RGB2 0, 0, 0, particle3 "redstone", speed3 0, RGB3 245, 122, 0, center player, id "wings_%player%", isSingle false, player, rainbowMode false, angle 110, height 0, space 0.2, visibleRange 30, tps 1, second 2 
+                    apply resistance 5 to player for 4 seconds
+                    push the player upwards at speed 0.7
+                    play sound "minecraft:entity.enderdragon.flap"
+                    wait 0.6 seconds
+                    play sound "minecraft:entity.enderdragon.flap"
+                    push the player forwards at speed 4
+                    wait 2 second
+                    stopEffect id "wings_%player%"
+                    wait 1 seconds
+                    message "&c악마의 &e날개 &a사용가능"
+                    delete {데빌블레이드::%player%::왼클}
+
+on left click:
+    player is holding a golden sword:
+        if name of player's tool contains "&d데빌&e블레이드":
+            repair tool of player
+
+#-------------------------------------------------------------------------------------
+
+command /S4:
+    trigger:
+        message "&6헬리오스의 &e사슬 &6지급 완료"
+        wait 1 tick
+        give 1 diamond sword named "&6헬리오스의 &e사슬" to player
+
+command /헬리오스의사슬초기화:
+    trigger:
+        delete {헬리오스::%player%::*}
+
+on right click:
+    player is holding a diamond sword:
+        if name of player's tool contains "&6헬리오스의 &e사슬":
+            if player is not sneaking:
+                if {헬리오스::%player%::NR} is set:
+                    message "&c플레임 &e서클&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {헬리오스::%player%::NR} is not set:
+                    drawCircle particle "angryvillager", RGB 0, 0, 0, center player, id "hs1_%player%", randomRotation false, radius 2.5, density 12, start 0, visibleRange 32, xRotation 0, yRotation 0, zRotation 0
+                    drawCircle particle "flame", RGB 0, 0, 0, center player, id "hs2_%player%", randomRotation false, radius 2.5, density 12, start 0, visibleRange 32, xRotation 0, yRotation 0, zRotation 0
+                    drawSphere style 1, particle "flame", center player, id "hs3_%player%", rainbowMode true, radius 2.5, density 100, visibleRange 32, pulseDelay 1
+                    drawCircle particle "crit", RGB 0, 0, 0, center player, id "hs4_%player%", randomRotation false, radius 2.5, density 12, start 0, visibleRange 32, xRotation 0, yRotation 0, zRotation 0
+                    play sound "minecraft:entity.wither.hurt"
+                    loop all entities in radius 6 around player:
+                        if name of loop-entity is not "%player%":
+                            apply poison 3 to loop-entity for 3 seconds
+                    wait 0.6 seconds
+                    stopEffect id "hs1_%player%"
+                    stopEffect id "hs2_%player%"
+                    stopEffect id "hs3_%player%"
+                    stopEffect id "hs4_%player%"
+                    set {헬리오스::%player%::NR} to true
+                    wait 5 seconds
+                    message "&c플레임 &e서클 &a사용가능"
+                    delete {헬리오스::%player%::NR}
+
+on right click:
+    player is holding a diamond sword:
+        if name of player's tool contains "&6헬리오스의 &e사슬":
+            if player is sneaking:
+                if {헬리오스::%player%::YR} is set:
+                    message "&c파이어&e플레임&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {헬리오스::%player%::YR} is not set:
+                    set {헬리오스::%player%::YR} to true
+                    shoot an fireball from player
+                    loop all entities in radius 6 around player:
+                        if name of loop-entity is not "%player%":
+                            apply poison 3 to loop-entity for 1 seconds
+                            drawCircle particle "redstone", RGB 255, 0, 0, center player, id "hyr1_%player%", randomRotation false, radius 2.5, density 25, start 0, visibleRange 32, xRotation 0, yRotation 0, zRotation 0
+                            drawCircle particle "redstone", RGB 0, 0, 0, center player, id "hyr2_%player%", randomRotation false, radius 2.5, density 20, start 0, visibleRange 32, xRotation 0, yRotation 0, zRotation 0
+                            play sound "minecraft:entity.enderdragon.flap"
+                            wait 1.5 seconds
+                            apply poison 3 to loop-entity for 1 seconds
+                            play sound "minecraft:entity.enderdragon.flap"
+                            wait 1.5 seconds
+                            apply poison 3 to loop-entity for 1 seconds
+                            play sound "minecraft:entity.enderdragon.flap"
+                            wait 1.5 seconds
+                            stopEffect id "hyr1_%player%"
+                            stopEffect id "hyr2_%player%"
+                    wait 1 minutes
+                    message "&c파이어&e플레임 &a사용가능"
+                    delete {헬리오스::%player%::YR}
+
+on left click:
+    player is holding a diamond sword:
+        if name of player's tool contains "&6헬리오스의 &e사슬":
+            repair tool of player
+                    
+#------------------------------------------------------------------------------
+
+command /S5:
+    trigger:
+        message "&a힐링 &e엑스 &6지급 완료"
+        wait 1 tick
+        give 1 golden axe named "&a힐링 &e엑스" to player
+
+command /힐링엑스초기화:
+    trigger:
+        delete {힐링엑스::%player%::*}
+
+on right click:
+    player is holding a golden axe:
+        if name of player's tool contains "&a힐링 &e엑스":
+            if player is not sneaking:
+                if {힐링엑스::%player%::NS} is set:
+                    message "&a힐 &6서클&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {힐링엑스::%player%::NS} is not set:
+                    set {힐링엑스::%player%::NS} to true
+                    play sound "minecraft:block.enchantment_table.use"
+                    drawRings particle "redstone", RGB 80, 255, 255, center player, id "힐서클_%player%", rainbowMode true, randomRotation true, animated false, radius 1, ringCount 4, ringDensity 20, visibleRange 32, pulseDelay 2
+                    heal the player by 5
+                    wait 1 seconds
+                    stopEffect id "힐서클_%player%"
+                    wait 10 seconds
+                    message "&a힐 &6서클 &a사용 가능"
+                    delete {힐링엑스::%player%::NS}
+
+on right click:
+    player is holding a golden axe:
+        if name of player's tool contains "&a힐링 &e엑스":
+            if player is sneaking:
+                if {힐링엑스::%player%::YS} is set:
+                    message "&a힐링 &6머신&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {힐링엑스::%player%::YS} is not set:
+                    set {힐링엑스::%player%::YS} to true
+                    drawWarpRings style 1, particle "redstone", RGB 80, 255, 255, center location of block at player, id "힐링머신_%player%", rainbowMode true, scan true, height 2, radius 4, ringCount 40, ringDensity 100, visibleRange 32
+                    if player is sneaking:
+                        send action bar "&6◆&a◇◇◇◇" to player
+                        play sound "minecraft:block.note.pling"
+                        wait 1 seconds
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "힐링머신_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&a힐링 &6머신 &a사용 가능"
+                        wait 1 tick
+                        delete {힐링엑스::%player%::YS}
+
+                    if player is sneaking:
+                        send action bar "&6◆◆&a◇◇◇" to player
+                        play sound "minecraft:block.note.pling"
+                        wait 1 seconds
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "힐링머신_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&a힐링 &6머신 &a사용 가능"
+                        wait 1 tick
+                        delete {힐링엑스::%player%::YS}
+
+                    if player is sneaking:
+                        send action bar "&6◆◆◆&a◇◇" to player 
+                        play sound "minecraft:block.note.pling"
+                        wait 1 seconds
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "힐링머신_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&a힐링 &6머신 &a사용 가능"
+                        wait 1 tick
+                        delete {힐링엑스::%player%::YS}
+
+                    if player is sneaking:
+                        send action bar "&6◆◆◆◆&a◇" to player
+                        play sound "minecraft:block.note.pling"
+                        wait 1 seconds
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "힐링머신_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&a힐링 &6머신 &a사용 가능"
+                        wait 1 tick
+                        delete {힐링엑스::%player%::YS}
+
+                    if player is sneaking:
+                        send action bar "&a◆◆◆◆◆" to player
+                        play sound "minecraft:entity.wither.break_block"
+                    else:
+                        message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                        play sound "minecraft:entity.endermen.teleport"
+                        stopEffect id "힐링머신_%player%"
+                        stop
+                        wait 1 minutes
+                        message "&a힐링 &6머신 &a사용 가능"
+                        wait 1 tick
+                        delete {힐링엑스::%player%::YS}
+
+                    loop all entities in radius 6 around player:
+                        if name of loop-entity is "%player%":
+                            heal the player by 15
+                    wait 1 tick
+                    stopEffect id "힐링머신_%player%"
+                    wait 1 minutes
+                    message "&a힐링 머신 &a사용 가능"
+                    wait 1 tick
+                    delete {힐링엑스::%player%::YS}
+
+on left click:
+    player is holding a golden axe:
+        if name of player's tool contains "&a힐링 &e엑스":
+            repair tool of player
+
+#----------------------------------------------------------------------------------
+
+command /S6:
+    trigger:
+        message "&4데스&f스톰&e블레이드 &6지급 완료"
+        wait 1 tick
+        give 1 diamond axe named "&4데스&f스톰&e블레이드" to player
+
+command /데스스톰블레이드초기화:
+    trigger:
+        delete {데스스톰블레이드::%player%::*}
+
+on right click:
+    player is holding a diamond axe:
+        if name of player's tool contains "&4데스&f스톰&e블레이드":
+            if player is not sneaking:
+                if {데스스톰블레이드::%player%::NR} is set:
+                    message "&f화이트&6스톰&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {데스스톰블레이드::%player%::NR} is not set:
+                    set {데스스톰블레이드::%player%::NR} to true
+                    set {화이트스톰_loca} to location of targeted entity
+                    if {화이트스톰_loca} is location of targeted entity:
+                        drawLine particle redstone, RGB 255, 255, 255, center player, target {화이트스톰_loca}, id "화이트스톰1_%player%", rainbowMode false, solid true, density 15, length 0, zigZag count 18, height 0, visibleRange 32, displacementXYZ 0, 1, 0, pulseDelay 1
+                        drawLine particle redstone, RGB 255, 255, 255, center player, target {화이트스톰_loca}, id "화이트스톰2_%player%", rainbowMode false, solid true, density 15, length 0, zigZag count 18, height 0, visibleRange 32, displacementXYZ 1, 0, 0, pulseDelay 1
+                        drawLine particle redstone, RGB 255, 255, 255, center player, target {화이트스톰_loca}, id "화이트스톰3_%player%", rainbowMode false, solid true, density 15, length 0, zigZag count 18, height 0, visibleRange 32, displacementXYZ 0, 0, 1, pulseDelay 1
+                        play sound "minecraft:entity.wither.shoot"
+                        damage targeted entity by 8
+                        wait 0.1 seconds
+                        stopEffect id "화이트스톰1_%player%"
+                        stopEffect id "화이트스톰2_%player%"
+                        stopEffect id "화이트스톰3_%player%"
+                        wait 4.9 seconds
+                        message "&f화이트&6스톰 &a사용 가능"
+                        delete {데스스톰블레이드::%player%::NR}
+                        
+                    else:
+                        message "&f화이트&6스톰&c은 엔티티에게만 가능합니다!"
+                        play sound "minecraft:entity.endermen.teleport"
+                        delete {데스스톰블레이드::%player%::NR}
+
+on right click:
+    player is holding a diamond axe:
+        if name of player's tool contains "&4데스&f스톰&e블레이드":
+            if player is sneaking:
+                if {데스스톰블레이드::%player%::YR} is set:
+                    message "&d익스플루시브&6스톰&a이 준비가 되지 않았습니다!"
+                    play sound "minecraft:entity.endermen.teleport"
+                    stop
+                if {데스스톰블레이드::%player%::YR} is not set:
+                    set {데스스톰블레이드::%player%::YR} to true
+                    set {익스플루시브스톰_loca} to location of targeted entity
+                    if {익스플루시브스톰_loca} is location of targeted entity:
+                        drawHalo particle "redstone", RGB 0, 0, 0, center player, id "익스플루시브_%player%", rainbowMode true, solid true, density 10, visibleRange 32
+                        if player is sneaking:
+                            send action bar "&d◆&e◇◇◇◇" to player
+                            play sound "minecraft:block.note.pling"
+                            wait 1 seconds
+                        else:
+                            message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                            play sound "minecraft:entity.endermen.teleport"
+                            stopEffect id "익스플루시브_%player%"
+                            stop
+                            wait 1 minutes
+                            message "&d익스플루시브&6스톰 &a사용 가능"
+                            wait 1 tick
+                            delete {데스스톰블레이드::%player%::YR}
+
+                        if player is sneaking:
+                            send action bar "&d◆◆&e◇◇◇" to player
+                            play sound "minecraft:block.note.pling"
+                            wait 1 seconds
+                        else:
+                            message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                            play sound "minecraft:entity.endermen.teleport"
+                            stopEffect id "익스플루시브_%player%"
+                            stop
+                            wait 1 minutes
+                            message "&d익스플루시브&6스톰 &a사용 가능"
+                            wait 1 tick
+                            delete {데스스톰블레이드::%player%::YR}
+
+                        if player is sneaking:
+                            send action bar "&d◆◆◆&e◇◇" to player 
+                            play sound "minecraft:block.note.pling"
+                            wait 1 seconds
+                        else:
+                            message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                            play sound "minecraft:entity.endermen.teleport"
+                            stopEffect id "익스플루시브_%player%"
+                            stop
+                            wait 1 minutes
+                            message "&d익스플루시브&6스톰 &a사용 가능"
+                            wait 1 tick
+                            delete {데스스톰블레이드::%player%::YR}
+
+                        if player is sneaking:
+                            send action bar "&d◆◆◆◆&e◇" to player
+                            play sound "minecraft:block.note.pling"
+                            wait 1 seconds
+                        else:
+                            message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                            play sound "minecraft:entity.endermen.teleport"
+                            stopEffect id "익스플루시브_%player%"
+                            stop
+                            wait 1 minutes
+                            message "&d익스플루시브&6스톰 &a사용 가능"
+                            wait 1 tick
+                            delete {데스스톰블레이드::%player%::YR}
+
+                        if player is sneaking:
+                            send action bar "&d◆◆◆◆◆" to player
+                            play sound "minecraft:entity.wither.break_block"
+                        else:
+                            message "&c쉬프트를 지속하지 않아 중단 되었습니다."
+                            play sound "minecraft:entity.endermen.teleport"
+                            stopEffect id "익스플루시브_%player%"
+                            stop
+                            wait 1 minutes
+                            message "&d익스플루시브&6스톰 &a사용 가능"
+                            wait 1 tick
+                            delete {데스스톰블레이드::%player%::YR}
+
+                        wait 0.1 seconds
+                        drawLine particle explosionlarge, RGB 0, 0, 0, center player, target {익스플루시브스톰_loca}, id "익스플루시브스톰_%player%", rainbowMode false, solid true, density 15, length 0, zigZag count 18, height 0, visibleRange 32, displacementXYZ 0, 1, 0, pulseDelay 1
+                        play sound "minecraft:entity.wither.spawn"
+                        damage targeted entity by 20
+                        wait 0.1 seconds
+                        stopEffect id "익스플루시브스톰_%player%"
+                        stopEffect id "익스플루시브_%player%"
+                        wait 59.9 seconds
+                        message "&d익스플루시브&6스톰 &a사용 가능"
+                        
+                    else:
+                        message "&d익스플루시브&6스톰&c은 엔티티에게만 가능합니다!"
+                        play sound "minecraft:entity.endermen.teleport"
+                        delete {데스스톰블레이드::%player%::YR}
+
+on left click:
+    player is holding a diamond axe:
+        if name of player's tool contains "&4데스&f스톰&e블레이드":
+            repair tool of player
